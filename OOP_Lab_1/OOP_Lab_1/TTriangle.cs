@@ -20,23 +20,83 @@ namespace OOP_Lab_1
             this.c = c;
         }
 
-        public double getA()
+        public static bool CanExist(double a, double b, double c)
         {
-            return a;
+            return (a < b + c && b < a + c & c < a + b);
         }
 
-        public double getB()
+        public double A
         {
-            return b;
+            get
+            {
+                return a;
+            }
+            set
+            {
+                if (CanExist(value, b, c))
+                {
+                    a = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Attempted to make illegal triangle");
+                }
+            }
         }
 
-        public double getC()
+        public double B
         {
-            return c;
+            get
+            {
+                return b;
+            }
+            set
+            {
+                if (CanExist(a, value, c))
+                {
+                    b = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Attempted to make illegal triangle");
+                }
+            }
         }
 
-        public TTriangle()
+        public double C
         {
+            get
+            {
+                return c;
+            }
+            set
+            {
+                if (CanExist(a, b, value))
+                {
+                    c = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Attempted to make illegal triangle");
+                }
+            }
+        }
+
+        public double Perimeter
+        {
+            get
+            {
+                return a + b + c;
+            }
+        }
+
+        public double Area
+        {
+            get
+            {
+                double p = Perimeter / 2;
+                return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+            }
         }
     }
 }
