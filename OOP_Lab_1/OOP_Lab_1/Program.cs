@@ -49,7 +49,7 @@ namespace OOP_Lab_1
                 i++;
             }
 
-            Console.WriteLine("Matrix C:");
+            Console.WriteLine("\nMatrix C:");
             Console.Write("[");
             for (int ii = 0; ii < rowsCnt; ii++)
             {
@@ -66,13 +66,77 @@ namespace OOP_Lab_1
                         Console.Write("]");
                     }
                 }
-                if (ii == rowsCnt -1)
+                if (ii != rowsCnt -1)
                 {
-                    Console.WriteLine("]");
+                    Console.WriteLine(",");
                 }
                 else
                 {
+                    Console.WriteLine("]");
+                }
+            }
+
+            int[] F = new int[total];
+            i = 0;
+            for (int ii = 0; ii < rowsCnt; ii++)
+            {
+                for (int j = 0; j < C[ii].Length; j++)
+                {
+                    F[i++] = C[ii][j];
+                }
+            }
+
+            Array.Sort(F);
+
+            Console.WriteLine("\nSorted F:");
+
+            Console.Write("[");
+            for (int ii = 0; ii < total; ii++)
+            {
+                if (ii != total - 1)
+                {
+                    Console.Write($"{F[ii]}, ");
+                }
+                else
+                {
+                    Console.WriteLine($"{F[ii]}]");
+                }
+            }
+            i = 0;
+            int[][] Q = new int[n][];
+            for (int ii = 0; ii < n; ii++)
+            {
+                Q[ii] = new int[n];
+                for (int j = 0; j < n; j++)
+                {
+                    Q[ii][j] = F[i++];
+                }
+            }
+
+            Console.WriteLine("\nMatrix Q:");
+            Console.Write("[");
+            for (int ii = 0; ii < n; ii++)
+            {
+                Console.Write("[");
+                for (int j = 0; j < Q[ii].Length; j++)
+                {
+                    Console.Write(Q[ii][j]);
+                    if (j != Q[ii].Length - 1)
+                    {
+                        Console.Write(", ");
+                    }
+                    else
+                    {
+                        Console.Write("]");
+                    }
+                }
+                if (ii != n - 1)
+                {
                     Console.WriteLine(",");
+                }
+                else
+                {
+                    Console.WriteLine("]");
                 }
             }
         }
