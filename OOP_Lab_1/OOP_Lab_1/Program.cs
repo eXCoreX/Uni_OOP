@@ -4,6 +4,36 @@ namespace OOP_Lab_1
 {
     class Program
     {
+        static void MatrixPrettyPrint<T>(T[][] a, int n)
+        {
+            Console.Write("[");
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("[");
+                for (int j = 0; j < a[i].Length; j++)
+                {
+                    Console.Write(a[i][j]);
+                    if (j != a[i].Length - 1)
+                    {
+                        Console.Write(", ");
+                    }
+                    else
+                    {
+                        Console.Write("]");
+                    }
+                }
+                if (i != n - 1)
+                {
+                    Console.WriteLine(",");
+                }
+                else
+                {
+                    Console.WriteLine("]");
+                }
+            }
+        }
+
+
         static void Main(string[] args)
         {
             Random r = new Random();
@@ -50,31 +80,7 @@ namespace OOP_Lab_1
             }
 
             Console.WriteLine("\nMatrix C:");
-            Console.Write("[");
-            for (int ii = 0; ii < rowsCnt; ii++)
-            {
-                Console.Write("[");
-                for (int j = 0; j < C[ii].Length; j++)
-                {
-                    Console.Write(C[ii][j]);
-                    if (j != C[ii].Length - 1)
-                    {
-                        Console.Write(", ");
-                    }
-                    else
-                    {
-                        Console.Write("]");
-                    }
-                }
-                if (ii != rowsCnt -1)
-                {
-                    Console.WriteLine(",");
-                }
-                else
-                {
-                    Console.WriteLine("]");
-                }
-            }
+            MatrixPrettyPrint(C, rowsCnt);
 
             int[] F = new int[total];
             i = 0;
@@ -102,6 +108,8 @@ namespace OOP_Lab_1
                     Console.WriteLine($"{F[ii]}]");
                 }
             }
+
+            // Constructing Q
             i = 0;
             int[][] Q = new int[n][];
             for (int ii = 0; ii < n; ii++)
@@ -114,31 +122,7 @@ namespace OOP_Lab_1
             }
 
             Console.WriteLine("\nMatrix Q:");
-            Console.Write("[");
-            for (int ii = 0; ii < n; ii++)
-            {
-                Console.Write("[");
-                for (int j = 0; j < Q[ii].Length; j++)
-                {
-                    Console.Write(Q[ii][j]);
-                    if (j != Q[ii].Length - 1)
-                    {
-                        Console.Write(", ");
-                    }
-                    else
-                    {
-                        Console.Write("]");
-                    }
-                }
-                if (ii != n - 1)
-                {
-                    Console.WriteLine(",");
-                }
-                else
-                {
-                    Console.WriteLine("]");
-                }
-            }
+            MatrixPrettyPrint(Q, n);
         }
     }
 }
