@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace OOP_Lab_1
 {
@@ -6,31 +7,35 @@ namespace OOP_Lab_1
     {
         static void MatrixPrettyPrint<T>(T[][] a, int n)
         {
-            Console.Write("[");
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write("[");
-                for (int j = 0; j < a[i].Length; j++)
-                {
-                    Console.Write(a[i][j]);
-                    if (j != a[i].Length - 1)
-                    {
-                        Console.Write(", ");
-                    }
-                    else
-                    {
-                        Console.Write("]");
-                    }
-                }
-                if (i != n - 1)
-                {
-                    Console.WriteLine(",");
-                }
-                else
-                {
-                    Console.WriteLine("]");
-                }
-            }
+            //Console.Write("[");
+            //for (int i = 0; i < n; i++)
+            //{
+            //    Console.Write("[");
+            //    for (int j = 0; j < a[i].Length; j++)
+            //    {
+            //        Console.Write(a[i][j]);
+            //        if (j != a[i].Length - 1)
+            //        {
+            //            Console.Write(", ");
+            //        }
+            //        else
+            //        {
+            //            Console.Write("]");
+            //        }
+            //    }
+            //    if (i != n - 1)
+            //    {
+            //        Console.WriteLine(",");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("]");
+            //    }
+            //}
+
+            var res = from e in a.Take(n)
+                      select string.Join(", ", e);
+            Console.WriteLine(string.Join(",,\n", res));
         }
 
 
