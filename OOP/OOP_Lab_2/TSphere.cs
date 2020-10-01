@@ -5,9 +5,6 @@ namespace OOP_Lab_2
 {
     public class TSphere : TCircle, IComparable<TSphere>
     {
-        private new double Length;
-
-
         public double Volume
         {
             get
@@ -41,12 +38,6 @@ namespace OOP_Lab_2
         public override string ToString()
         {
             return string.Format("Sphere, radius = {0}", radius);
-        }
-
-
-        private new void InputCircle()
-        {
-
         }
 
 
