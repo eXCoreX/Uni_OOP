@@ -43,8 +43,8 @@ namespace OOP_Lab_2
             if (CheckRect(tmp_v))
             {
                 vertices = tmp_v;
-                a = vertices[1].x - vertices[0].x;
-                b = vertices[2].y - vertices[0].y;
+                a = vertices[2].x - vertices[0].x;
+                b = vertices[1].y - vertices[0].y;
             }
             else
             {
@@ -117,16 +117,18 @@ namespace OOP_Lab_2
             Point[] tmp_v = new Point[4];
             for (int i = 0; i < 4; i++)
             {
-                Console.WriteLine("x{0}:", i + 1);
+                Console.Write("x{0}: ", i + 1);
                 tmp_v[i].x = double.Parse(Console.ReadLine());
-                Console.WriteLine("y{0}:", i + 1);
+                Console.Write("y{0}: ", i + 1);
                 tmp_v[i].y = double.Parse(Console.ReadLine());
             }
+            Array.Sort(tmp_v);
+
             if (CheckRect(tmp_v))
             {
                 vertices = tmp_v;
-                a = vertices[1].x - vertices[0].x;
-                b = vertices[2].y - vertices[0].y;
+                a = vertices[2].x - vertices[0].x;
+                b = vertices[1].y - vertices[0].y;
             }
             else
             {
