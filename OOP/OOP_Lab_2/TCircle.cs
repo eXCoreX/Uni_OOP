@@ -68,10 +68,7 @@ namespace OOP_Lab_2
 
         public double GetSectorArea(double angle)
         {
-            angle %= (Math.PI);
-            angle += (Math.PI);
-            angle %= (Math.PI);
-            return angle * radius * radius;
+            return Math.Abs(angle * radius * radius / 2.0);
         }
 
 
