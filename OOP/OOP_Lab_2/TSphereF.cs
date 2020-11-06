@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace OOP_Lab_2
 {
-    public class TSphere : TCircleF, IComparable<TSphere>
+    public class TSphereF : TCircleF, IComparable<TSphereF>
     {
         public string Color
         {
@@ -19,14 +19,14 @@ namespace OOP_Lab_2
             }
         }
 
-        public TSphere()
+        public TSphereF()
         {
             this.radius = 1;
             this.Color = "None";
         }
 
 
-        public TSphere(double radius)
+        public TSphereF(double radius)
         {
             if (radius < 0)
             {
@@ -37,7 +37,7 @@ namespace OOP_Lab_2
         }
 
 
-        public TSphere(double radius, string color)
+        public TSphereF(double radius, string color)
         {
             if (radius < 0)
             {
@@ -48,9 +48,10 @@ namespace OOP_Lab_2
         }
 
 
-        public TSphere(TSphere other)
+        public TSphereF(TSphereF other)
         {
             this.radius = other.radius;
+            Color = (string)other.Color.Clone();
         }
 
 
@@ -67,33 +68,46 @@ namespace OOP_Lab_2
             Color = Console.ReadLine();
         }
 
-        public int CompareTo(TSphere other)
+        public int CompareTo(TSphereF other)
         {
             return this.radius.CompareTo(other.radius);
         }
 
 
-        public static TSphere operator +(TSphere first, TSphere second)
+        public static TSphereF operator +(TSphereF first, TSphereF second)
         {
-            return new TSphere(first.radius + second.radius);
+            return new TSphereF(first.radius + second.radius);
         }
 
 
-        public static TSphere operator -(TSphere first, TSphere second)
+        public static TSphereF operator -(TSphereF first, TSphereF second)
         {
-            return new TSphere(Math.Abs(first.radius - second.radius));
+            return new TSphereF(Math.Abs(first.radius - second.radius));
         }
 
 
-        public static TSphere operator *(TSphere circle, double multiplier)
+        public static TSphereF operator *(TSphereF sphere, double multiplier)
         {
-            return new TSphere(circle.radius * multiplier);
+            return new TSphereF(sphere.radius * multiplier);
         }
 
 
-        public static TSphere operator *(double multiplier, TSphere circle)
+        public static TSphereF operator *(double multiplier, TSphereF sphere)
         {
-            return new TSphere(circle.radius * multiplier);
+            return new TSphereF(sphere.radius * multiplier);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            var objSp = obj as TSphereF;
+            return base.Equals(objSp) && (Color == objSp.Color);
+        }
+
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + Color.GetHashCode() * 31;
         }
     }
 }
