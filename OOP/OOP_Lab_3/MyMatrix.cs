@@ -163,6 +163,20 @@ namespace OOP_Lab_3
         }
 
 
+        private double[,] GetTransponedArray()
+        {
+            double[,] newArr = new double[Width, Height];
+            for (int i = 0; i < Height; i++)
+            {
+                for (int j = 0; j < Width; j++)
+                {
+                    newArr[j, i] = m[i, j];
+                }
+            }
+            return newArr;
+        }
+
+
         // Public Methods
 
         public int GetHeight()
@@ -174,6 +188,18 @@ namespace OOP_Lab_3
         public int GetWidth()
         {
             return m.GetLength(1);
+        }
+
+
+        public MyMatrix GetTransponedCopy()
+        {
+            return new MyMatrix(GetTransponedArray());
+        }
+
+
+        public void TransponeMe()
+        {
+            m = GetTransponedArray();
         }
 
 
