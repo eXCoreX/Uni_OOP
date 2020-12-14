@@ -10,24 +10,23 @@ namespace OOP_Lab_4_2
     {
         static void Main(string[] args)
         {
-            var imgFormatRegex = new Regex(@"^(gif)|(jpe?g)|(png)|(bmp)|(tiff?)$");
+            var imgFormatRegex = new Regex(@"^.((gif)|(jpe?g)|(png)|(bmp)|(tiff?))$", RegexOptions.IgnoreCase);
 
             var files = Directory.GetFiles(Directory.GetCurrentDirectory());
-            foreach (var file in files)
+            foreach (var filePath in files)
             {
-                var fileSplit = file.Split('.');
                 try
                 {
-                    Bitmap bmp = new Bitmap(file);
+                    Bitmap bmp = new Bitmap(filePath);
                     bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
-                    bmp.Save(fileSplit[0] + "-mirrored.gif");
-                    Console.WriteLine("Processed image {0}", file);
+                    bmp.Save(Path.GetFileNameWithoutExtension(filePath) + "-mirrored.gif");
+                    Console.WriteLine("Processed image {0}", Path.GetFileName(filePath));
                 }
                 catch (ArgumentException)
                 {
-                    if (imgFormatRegex.IsMatch(fileSplit[1]))
+                    if (imgFormatRegex.IsMatch(Path.GetExtension(filePath)))
                     {
-                        Console.WriteLine("Can't open {0} as image, proceeding...", file);
+                        Console.WriteLine("Can't open {0} as image, proceeding...", Path.GetFileName(filePath));
                     }
                 }
             }
