@@ -13,9 +13,9 @@ namespace OOP_Lab_4_1
             int n = 0;
             try
             {
-                using StreamWriter noFile = new StreamWriter("no_file.txt");
-                using StreamWriter badData = new StreamWriter("bad_data.txt");
-                using StreamWriter overflow = new StreamWriter("overflow.txt");
+                using StreamWriter noFile = new StreamWriter("no_file.txt"),
+                                   badData = new StreamWriter("bad_data.txt"),
+                                   overflow = new StreamWriter("overflow.txt");
                 for (int i = 10; i < 30; i++)
                 {
                     int mulRes = 1;
@@ -58,16 +58,16 @@ namespace OOP_Lab_4_1
                 }
                 try
                 {
-                    Console.WriteLine("Mean: " + (result / (double)n));
+                    Console.WriteLine("Average: " + (result / (double)n));
                 }
                 catch (DivideByZeroException)
                 {
-                    Console.WriteLine("Not enought data");
+                    Console.WriteLine("Not enough data");
                 }
             }
             catch(UnauthorizedAccessException)
             {
-                Console.WriteLine("Can't create or open file");
+                Console.WriteLine("Can't create or open file(s)");
             }
         }
     }
