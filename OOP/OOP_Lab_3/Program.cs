@@ -25,11 +25,18 @@ namespace OOP_Lab_3
             MyMatrix a = new MyMatrix(mtx1);
             MyMatrix b = new MyMatrix(a);
 
+            Console.WriteLine("Before mtx1 change:\n" + a);
+            mtx1[1, 1] = 0;
+            Console.WriteLine("After mtx1 change:\n" + a);
+            Console.WriteLine();
+
             Console.WriteLine(b);
             Console.WriteLine();
+
             MyMatrix c = new MyMatrix(b.ToString());
             Console.WriteLine(c);
             Console.WriteLine();
+
             MyMatrix m1 = new MyMatrix(mtx2);
             MyMatrix m2 = new MyMatrix(mtx3);
             Console.WriteLine(m1 * m2);

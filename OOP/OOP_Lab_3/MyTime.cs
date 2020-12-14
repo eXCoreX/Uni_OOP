@@ -201,6 +201,7 @@ namespace OOP_Lab_3
             {
                 return $"{les_num}-{(les_num == 3 ? "я" : "а")} пара";
             }
+
             else if (les_num < 6)
             {
                 return $"перерва між {les_num}-ю та {les_num + 1}-ю парами";

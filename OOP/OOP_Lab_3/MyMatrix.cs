@@ -20,6 +20,7 @@ namespace OOP_Lab_3
 
         public MyMatrix(double[,] mtx)
         {
+            //m = mtx;
             m = (double[,])mtx.Clone();
         }
 
