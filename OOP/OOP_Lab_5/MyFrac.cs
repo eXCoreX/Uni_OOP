@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace OOP_Lab_5
 {
-    public class Frac : IMyNumber<Frac>
+    public class MyFrac : IMyNumber<MyFrac>
     {
         // Fields
 
@@ -20,6 +20,7 @@ namespace OOP_Lab_5
             set
             {
                 num = value;
+                Normalize();
             }
         }
 
@@ -39,32 +40,31 @@ namespace OOP_Lab_5
                 else
                 {
                     denom = value;
+                    Normalize();
                 }
             }
         }
 
         // Constuctors
 
-        public Frac()
+        public MyFrac()
         {
             num = 0;
             denom = 1;
         }
 
 
-        public Frac(BigInteger num, BigInteger denom)
+        public MyFrac(BigInteger num, BigInteger denom)
         {
-            Num = num;
+            this.num = num;
             Denom = denom;
-            Normalize();
         }
 
 
-        public Frac(int num, int denom)
+        public MyFrac(int num, int denom)
         {
-            Num = num;
+            this.num = num;
             Denom = denom;
-            Normalize();
         }
 
         // Private methods
@@ -94,54 +94,54 @@ namespace OOP_Lab_5
 
         // Public Methods
 
-        public Frac Add(Frac b)
+        public MyFrac Add(MyFrac b)
         {
-            return new Frac(Num * b.Denom + Denom * b.Num, Denom * b.Denom);
+            return new MyFrac(Num * b.Denom + Denom * b.Num, Denom * b.Denom);
         }
 
 
-        public Frac Divide(Frac b)
+        public MyFrac Divide(MyFrac b)
         {
             if (b.Num == 0)
             {
                 throw new DivideByZeroException();
             }
-            return new Frac(Num * b.Denom, Denom * b.Num);
+            return new MyFrac(Num * b.Denom, Denom * b.Num);
         }
 
 
-        public Frac Multiply(Frac b)
+        public MyFrac Multiply(MyFrac b)
         {
-            return new Frac(Num * b.Num, Denom * b.Denom);
+            return new MyFrac(Num * b.Num, Denom * b.Denom);
         }
 
 
-        public Frac Subtract(Frac b)
+        public MyFrac Subtract(MyFrac b)
         {
-            return new Frac(Num * b.Denom - Denom * b.Num, Denom * b.Denom);
+            return new MyFrac(Num * b.Denom - Denom * b.Num, Denom * b.Denom);
         }
 
         // Static Methods
 
-        public static Frac operator +(Frac a, Frac b)
+        public static MyFrac operator +(MyFrac a, MyFrac b)
         {
             return a.Add(b);
         }
 
 
-        public static Frac operator /(Frac a, Frac b)
+        public static MyFrac operator /(MyFrac a, MyFrac b)
         {
             return a.Divide(b);
         }
 
 
-        public static Frac operator *(Frac a, Frac b)
+        public static MyFrac operator *(MyFrac a, MyFrac b)
         {
             return a.Multiply(b);
         }
 
 
-        public static Frac operator -(Frac a, Frac b)
+        public static MyFrac operator -(MyFrac a, MyFrac b)
         {
             return a.Subtract(b);
         }
