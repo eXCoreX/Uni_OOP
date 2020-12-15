@@ -167,6 +167,11 @@ namespace OOP_Lab_5_Tests
             Assert.False(a == null);
             Assert.NotNull(a);
             Assert.False(((object)a).Equals(null));
+            MyFrac b = null;
+            Assert.Null(b);
+            Assert.True(b == null);
+            Assert.True(b is null);
+            Assert.Throws<NullReferenceException>(() => b.Equals((object)null));
         }
     }
 
@@ -180,6 +185,11 @@ namespace OOP_Lab_5_Tests
             Assert.False(a == null);
             Assert.NotNull(a);
             Assert.False(((object)a).Equals(null));
+            MyComplex b = null;
+            Assert.Null(b);
+            Assert.True(b == null);
+            Assert.True(b is null);
+            Assert.Throws<NullReferenceException>(() => b.Equals((object)null));
         }
     }
 

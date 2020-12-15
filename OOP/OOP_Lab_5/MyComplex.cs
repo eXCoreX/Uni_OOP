@@ -150,12 +150,20 @@ namespace OOP_Lab_5
 
         public static bool operator ==(MyComplex a, MyComplex b)
         {
+            if (a is null)
+            {
+                return b is null;
+            }
             return a.Equals(b);
         }
 
 
         public static bool operator !=(MyComplex a, MyComplex b)
         {
+            if (a is null)
+            {
+                return !(b is null);
+            }
             return !a.Equals(b);
         }
     }
