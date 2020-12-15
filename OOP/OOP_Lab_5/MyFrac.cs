@@ -71,7 +71,7 @@ namespace OOP_Lab_5
 
         private BigInteger GCD()
         {
-            BigInteger a = Num, b = Denom;
+            BigInteger a = num, b = denom;
             while (a != 0 && b != 0)
             {
                 a %= b;
@@ -88,37 +88,37 @@ namespace OOP_Lab_5
         private void Normalize()
         {
             var gcd = GCD();
-            Num /= gcd;
-            Denom /= gcd;
+            num /= gcd;
+            denom /= gcd;
         }
 
         // Public Methods
 
         public MyFrac Add(MyFrac b)
         {
-            return new MyFrac(Num * b.Denom + Denom * b.Num, Denom * b.Denom);
+            return new MyFrac(num * b.denom + denom * b.num, denom * b.denom);
         }
 
 
         public MyFrac Divide(MyFrac b)
         {
-            if (b.Num == 0)
+            if (b.num == 0)
             {
                 throw new DivideByZeroException();
             }
-            return new MyFrac(Num * b.Denom, Denom * b.Num);
+            return new MyFrac(num * b.denom, denom * b.num);
         }
 
 
         public MyFrac Multiply(MyFrac b)
         {
-            return new MyFrac(Num * b.Num, Denom * b.Denom);
+            return new MyFrac(num * b.num, denom * b.denom);
         }
 
 
         public MyFrac Subtract(MyFrac b)
         {
-            return new MyFrac(Num * b.Denom - Denom * b.Num, Denom * b.Denom);
+            return new MyFrac(num * b.denom - denom * b.num, denom * b.denom);
         }
 
 
