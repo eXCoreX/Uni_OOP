@@ -81,6 +81,12 @@ namespace OOP_Lab_5
             return new MyComplex(re - b.re, im - b.im);
         }
 
+
+        public override string ToString()
+        {
+            return string.Format("{0}+{1}i", re, im);
+        }
+
         // Static Methods
 
         public static MyComplex operator +(MyComplex a, MyComplex b)

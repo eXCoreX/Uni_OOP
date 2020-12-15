@@ -121,6 +121,12 @@ namespace OOP_Lab_5
             return new MyFrac(Num * b.Denom - Denom * b.Num, Denom * b.Denom);
         }
 
+
+        public override string ToString()
+        {
+            return string.Format("{0}/{1}", num, denom);
+        }
+
         // Static Methods
 
         public static MyFrac operator +(MyFrac a, MyFrac b)
