@@ -68,6 +68,13 @@ namespace OOP_Lab_5
             Denom = denom;
         }
 
+
+        public MyFrac(int num)
+        {
+            this.num = num;
+            denom = 1;
+        }
+
         // Private methods
 
         private BigInteger GCD()

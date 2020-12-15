@@ -51,6 +51,13 @@ namespace OOP_Lab_5
             this.im = im;
         }
 
+
+        public MyComplex(double re)
+        {
+            this.re = re;
+            this.im = 0;
+        }
+
         // Public Methods
 
         public MyComplex Add(MyComplex b)
