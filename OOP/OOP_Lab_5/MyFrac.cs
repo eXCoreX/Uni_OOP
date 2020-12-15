@@ -90,6 +90,11 @@ namespace OOP_Lab_5
             var gcd = GCD();
             num /= gcd;
             denom /= gcd;
+            if (denom < 0)
+            {
+                num = -num;
+                denom = -denom;
+            }
         }
 
         // Public Methods
