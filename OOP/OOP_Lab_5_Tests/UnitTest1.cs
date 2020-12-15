@@ -156,4 +156,56 @@ namespace OOP_Lab_5_Tests
             Assert.Throws<DivideByZeroException>(() => a.Divide(b));
         }
     }
+
+
+    public class NullTestFrac
+    {
+        [Fact]
+        public void TestNullFrac()
+        {
+            MyFrac a = new MyFrac(1, 2);
+            Assert.False(a == null);
+            Assert.NotNull(a);
+            Assert.False(((object)a).Equals(null));
+        }
+    }
+
+
+    public class NullTestComplex
+    {
+        [Fact]
+        public void TestNullComplex()
+        {
+            MyComplex a = new MyComplex(1, 2);
+            Assert.False(a == null);
+            Assert.NotNull(a);
+            Assert.False(((object)a).Equals(null));
+        }
+    }
+
+
+    public class ToStringTestFrac
+    {
+        [Fact]
+        public void TestToStringFrac()
+        {
+            MyFrac a = new MyFrac(1, 2);
+            Assert.Equal("1/2", a.ToString());
+            MyFrac b = new MyFrac(1, -2);
+            Assert.Equal("-1/2", b.ToString());
+        }
+    }
+
+
+    public class ToStringTestComplex
+    {
+        [Fact]
+        public void TestToStringComplex()
+        {
+            MyComplex a = new MyComplex(1, 2);
+            Assert.Equal("1+2i", a.ToString());
+            MyComplex b = new MyComplex(1, -2);
+            Assert.Equal("1-2i", b.ToString());
+        }
+    }
 }
