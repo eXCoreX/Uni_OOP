@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace OOP_Lab_5
 {
-    public class MyFrac : IMyNumber<MyFrac>
+    public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
     {
         // Fields
 
@@ -126,6 +126,13 @@ namespace OOP_Lab_5
         {
             return string.Format("{0}/{1}", num, denom);
         }
+
+
+        public int CompareTo(MyFrac other)
+        {
+            return (this - other).num.CompareTo(0);
+        }
+
 
         // Static Methods
 

@@ -30,10 +30,34 @@ namespace OOP_Lab_5
             Console.WriteLine("=== Finishing testing (a+b)^2=a^2+2ab+b^2 with a = " + a + ", b = " + b + " ===");
         }
 
+
+        static void testSquaresDifference<T>(T a, T b) where T : IMyNumber<T>
+        {
+
+            Console.WriteLine("=== Starting testing (a-b)=(a^2 - b^2)/(a+b) with a = " + a + ", b = " + b + " ===");
+            Console.WriteLine("a = " + a);
+            Console.WriteLine("b = " + b);
+            Console.WriteLine("(a - b) = " + a.Subtract(b));
+            Console.WriteLine(" = = = ");
+            T num = a.Multiply(a);
+            Console.WriteLine("a^2 = " + num);
+            T bb = b.Multiply(b);
+            Console.WriteLine("b^2 = " + bb);
+            num = num.Subtract(bb);
+            Console.WriteLine("a^2 - b^2 = " + num);
+            T denom = a.Add(b);
+            Console.WriteLine("a + b = " + denom);
+            num = num.Divide(denom);
+            Console.WriteLine("(a^2 - b^2) / (a + b) = " + num);
+            Console.WriteLine("=== Finishing testing (a-b)=(a^2 - b^2)/(a+b) with a = " + a + ", b = " + b + " ===");
+        }
+
         static void Main(string[] args)
         {
             testAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
             testAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
+            testSquaresDifference(new MyFrac(1, 3), new MyFrac(1, 6));
+            testSquaresDifference(new MyComplex(1, 3), new MyComplex(1, 6));
             Console.ReadKey();
         }
     }
