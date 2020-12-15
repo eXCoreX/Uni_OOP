@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
 namespace OOP_Lab_5
 {
-    public class MyComplex : IMyNumber<MyComplex>
+    public class MyComplex : IMyNumber<MyComplex>, IEquatable<MyComplex>
     {
         // Fields
 
@@ -49,8 +51,6 @@ namespace OOP_Lab_5
             this.im = im;
         }
 
-        // Private methods
-
         // Public Methods
 
         public MyComplex Add(MyComplex b)
@@ -87,6 +87,41 @@ namespace OOP_Lab_5
             return string.Format("{0}" + (im < 0 ? "" : "+") + "{1}i", re, im);
         }
 
+
+        public bool Equals([AllowNull] MyComplex other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return (re == other.re) && (im == other.im);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            if (obj is MyComplex)
+            {
+                return this == obj as MyComplex;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public override int GetHashCode()
+        {
+            return re.GetHashCode() + 31 * im.GetHashCode();
+        }
+
         // Static Methods
 
         public static MyComplex operator +(MyComplex a, MyComplex b)
@@ -110,6 +145,18 @@ namespace OOP_Lab_5
         public static MyComplex operator -(MyComplex a, MyComplex b)
         {
             return a.Subtract(b);
+        }
+
+
+        public static bool operator ==(MyComplex a, MyComplex b)
+        {
+            return a.Equals(b);
+        }
+
+
+        public static bool operator !=(MyComplex a, MyComplex b)
+        {
+            return !a.Equals(b);
         }
     }
 }

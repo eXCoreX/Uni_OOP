@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace OOP_Lab_5
 {
-    public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
+    public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>, IEquatable<MyFrac>
     {
         // Fields
 
@@ -81,6 +82,8 @@ namespace OOP_Lab_5
                 }
                 b %= a;
             }
+            a = BigInteger.Abs(a);
+            b = BigInteger.Abs(b);
             return BigInteger.Max(a, b);
         }
 
@@ -139,6 +142,40 @@ namespace OOP_Lab_5
         }
 
 
+        public bool Equals([AllowNull] MyFrac other)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return (num == other.num) && (denom == other.denom);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+
+            if (obj is MyFrac)
+            {
+                return this == obj as MyFrac;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public override int GetHashCode()
+        {
+            return num.GetHashCode() + 31 * denom.GetHashCode();
+        }
+
         // Static Methods
 
         public static MyFrac operator +(MyFrac a, MyFrac b)
@@ -162,6 +199,18 @@ namespace OOP_Lab_5
         public static MyFrac operator -(MyFrac a, MyFrac b)
         {
             return a.Subtract(b);
+        }
+
+
+        public static bool operator ==(MyFrac a, MyFrac b)
+        {
+            return a.Equals(b);
+        }
+
+
+        public static bool operator !=(MyFrac a, MyFrac b)
+        {
+            return !a.Equals(b);
         }
     }
 }
